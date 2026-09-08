@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+{{ object.order_id }} -- {{ object.cart }}
+{% if not billing_profile %}
+  <div class="row text-center">
+  <div class="col-12 col-md-6">
+  <p class="lead">Login</p>
+  {% include "accounts/snippets/form.html" with form=login_form  next=request.build_absolute_uri %}
+  </div>
+  <div class="col-12 col-md-6">
+  {% url "guest_register" as guest_register_url %}
+  {% include "accounts/snippets/form.html" with form=guest_form  next=request.build_absolute_uri action_url=guest_register_url %}
+  </div>
+  </div>
+{% else %}
+    {% if not object.shipping_address  %}
+    <div class="row">
+    <div class="col-12">
+      <p class="lead">Shipping Address</p>
+      <hr>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-6">
+      {% url "checkout_address_create" as checkout_address_create %}
+      {% include "addresses/form.html" with form=address_form  next=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}
+    </div>
+    <div class="col-6">
+    {% url 'checkout_address_reuse' as checkout_address_reuse %}
+    {% include 'addresses/prevaddress.html' with address_qs=address_qs next=request.build_absolute_uri action_url=checkout_address_reuse address_type='shipping' %}
+    </div>
+    </div>
+    {% elif not object.billing_address  %}
+    <div class="row">
+    <div class="col-12">
+      <p class="lead">Billing Address</p>
+      <hr>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-6">
+      {% url "checkout_address_create" as checkout_address_create %}
+      {% include "addresses/form.html" with form=address_form  next=request.build_absolute_uri action_url=checkout_address_create address_type='billing' %}
+    </div>
+    <div class="col-6">
+    {% url 'checkout_address_reuse' as checkout_address_reuse %}
+    {% include 'addresses/prevaddress.html' with address_qs=address_qs next=request.build_absolute_uri action_url=checkout_address_reuse address_type='billing' %}
+    </div>
+    </div>
+    {% else %}
+      <h1>Finalize Checkout</h1>
+      <hr>
+      <div class="mt-5">
+      <p>Cart Items : {% for product in object.cart.products.all %}{{ product }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  
+      <p>Shipping Address : {{object.shipping_address.get_address }}</p>
+      <p>Billing Address :  {{object.billing_address.get_address }}</p>
+      <p>Cart Total     : {{ object.cart.total }}</p>
+      <p>Shipping Total : {{ object.shipping_total }}</p>
+      <p>Order Total    : {{ object.total }}</p>
+      <form class="form" method="POST" action="">{% csrf_token %}
+      <button type="submit"class="btn btn-success">Finalize Checkout</button>
+      </form>
+      </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

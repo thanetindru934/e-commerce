@@ -1,0 +1,86 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "T-Shirt",
+        "slug": "t-shirt-6qp8",
+        "description": "This is an awesome T Shirt. Buy it.",
+        "price": "39.99",
+        "image": "products/1365937/1365937.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-08-21T15:58:22.001Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "Hat",
+        "slug": "hat",
+        "description": "This is a aweome hat. Buy it",
+        "price": "39.99",
+        "image": "products/570644/570644.jpg",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-08-21T15:58:22.001Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "SuperComputer",
+        "slug": "supercomputer",
+        "description": "This is world's fastest computer",
+        "price": "45.00",
+        "image": "products/1737143/1737143.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-08-21T15:58:22.001Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "pant",
+        "slug": "pant",
+        "description": "this is a pant",
+        "price": "39.99",
+        "image": "products/3421679/3421679.jpg",
+        "featured": true,
+        "active": false,
+        "timestamp": "2018-08-21T15:58:22.001Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "Lorem Ipsum",
+        "slug": "lorem-ipsum",
+        "description": "Relative Units\r\nRelative units use a specific starting point of because it calculates only ratios. Available\r\nare the following units:\r\n\u2022 em: Unit of font size, based on the height in pixels (1 em is the size\r\nin pixels of the base fonts letter \u201cM\u201d)\r\n\u2022 ex: Unit of font size, based on the height of the small letter \u201cx\u201d\r\n\u2022 ch: Unit of font size, based on the width of the digit \u201c0\u201d\r\n\u2022 rem: Unit of font size, based on the width of the small letter \u201cm\u201d of\r\nthe root element of the page (body)\r\n\u2022 vw: Relative to 1% of the width of the viewport (46 cm screen\r\nwidth is 1 VW = 0.46 cm)\r\n\u2022 vh: Relative to 1% of the height of the viewport\r\n\u2022 vmin: Relative to 1% of the width of the narrow side of the\r\nviewport\r\n\u2022 vmax: Relative to 1% of the width of the wide side of the viewport\r\n\u2022 %: Percentage to the original value\r\nThe unit used in typography em defines the size of the letter \u201cM\u201d about as a measure\r\nof unity. This is not the case with CSS, the value is comparable with the browser default\r\nfont Times New Roman. Which concrete pixel value the browser uses, however, is not\r\nclearly defined, there are not 12 pixels as is often claimed, and the more frequently\r\nencountered 16 pixels are not a guarantee.\r\nFigure 1-5 shows the default font (here Firefox) actually used 16 pixels for the letter\r\n\u201cM\u201d and this is equivalent to specifying 16 px. The red line is 16 pixels wide. As font size\r\nwas adjusted to 1 em or 16 px at this screenshot,the achieved result is the same.",
+        "price": "40.00",
+        "image": "products/1489272/1489272.jpg",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-08-21T15:58:22.001Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "T-shirt",
+        "slug": "t-shirt",
+        "description": "This is a red short shirt",
+        "price": "35.00",
+        "image": "products/212952/212952.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-08-23T03:36:44.627Z"
+    }
+}
+]

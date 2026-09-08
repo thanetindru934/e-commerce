@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>Login</h1>
+<hr>
+<div class="row py-5">
+<div class="mx-auto my-auto  col-sm-6">
+{% include "accounts/snippets/form.html"  with next=request.GET.next %}
+</div>
+</div>
+{% endblock %}
