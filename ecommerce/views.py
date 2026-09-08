@@ -6,8 +6,8 @@ from .forms import ContactForm
 
 def home_page(request):
     context = {
-        "title": "Home Page",
-        "content": "you are viewing home page",
+        "title": "Welcome to eCommerce",
+        "content": "Browse our products and enjoy a simple and convenient online shopping experience.",
     }
 
     print("Session key - %s " % request.session.session_key)
