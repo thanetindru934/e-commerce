@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-09-15T11:38:54.049798" rpa="false" schemaversion="5">
+<suite id="s1" name="Ecommerce Tests" source="C:\CDU S2 2026\e-commerce-main\robot_tests\ecommerce_tests.robot">
+<kw name="Open E-Commerce Website" owner="ecommerce_resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:54.385591" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:38:54.385339" elapsed="1.501546"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.887147" elapsed="0.030793"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>10 seconds</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.918140" elapsed="0.001029"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2026-09-15T11:38:55.919634" level="INFO">${stamp} = 20260915113855</msg>
+<var>${stamp}</var>
+<arg>result_format=%Y%m%d%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.919328" elapsed="0.000343"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-09-15T11:38:55.920124" level="INFO">${email} = robot20260915113855@example.com</msg>
+<var>${email}</var>
+<arg>robot${stamp}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.919780" elapsed="0.000373"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-09-15T11:38:55.920535" level="INFO">${TEST_EMAIL} = robot20260915113855@example.com</msg>
+<arg>${TEST_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.920290" elapsed="0.000276"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:38:54.384602" elapsed="1.536025"/>
+</kw>
+<test id="s1-t1" name="TC_REG_01 - Register With Valid Details" line="10">
+<kw name="Register Test Customer" owner="ecommerce_resources">
+<kw name="Go To Registration" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:55.921701" level="INFO">Opening url 'http://127.0.0.1:8000/register/'</msg>
+<arg>${BASE_URL}/register/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.921598" elapsed="0.047150"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:38:55.921445" elapsed="0.047555"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:55.969731" level="INFO">Typing text 'Robot Test Customer' into text field 'id=id_full_name'.</msg>
+<arg>id=id_full_name</arg>
+<arg>Robot Test Customer</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.969299" elapsed="0.082971"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:56.052739" level="INFO">Typing text 'robot20260915113855@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>${TEST_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:56.052462" elapsed="0.077748"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:56.130770" level="INFO">Typing password into text field 'id=id_password1'.</msg>
+<msg time="2026-09-15T11:38:56.154036" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password1</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:56.130422" elapsed="0.064312"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:56.195599" level="INFO">Typing password into text field 'id=id_password2'.</msg>
+<msg time="2026-09-15T11:38:56.217248" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password2</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:56.195204" elapsed="0.055104"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:56.250631" level="INFO">Clicking button 'Register'.</msg>
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:38:56.250464" elapsed="1.156516"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:38:55.921239" elapsed="1.485961"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:57.419804" level="INFO">Current location is 'http://127.0.0.1:8000/login/'.</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:38:57.408815" elapsed="0.011163"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:38:57.488783" level="INFO">Current page contains text 'Login'.</msg>
+<arg>Login</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T11:38:57.420550" elapsed="0.068432"/>
+</kw>
+<doc>Verify registration using valid customer information.</doc>
+<status status="PASS" start="2026-09-15T11:38:55.920700" elapsed="1.578113"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-09-15T11:38:57.513762" elapsed="2.376433"/>
+</kw>
+<doc>Automated Functional Testing for E-Commerce System</doc>
+<status status="PASS" start="2026-09-15T11:38:54.051255" elapsed="5.839429"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ecommerce Tests" id="s1" pass="1" fail="0" skip="0">Ecommerce Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

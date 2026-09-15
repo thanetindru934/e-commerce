@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-09-15T11:46:02.217120" rpa="false" schemaversion="5">
+<suite id="s1" name="Ecommerce Tests" source="C:\CDU S2 2026\e-commerce-main\robot_tests\ecommerce_tests.robot">
+<kw name="Open E-Commerce Website" owner="ecommerce_resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:46:02.500920" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:46:02.500709" elapsed="0.935747"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.436661" elapsed="0.029921"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>10 seconds</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.466798" elapsed="0.001188"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2026-09-15T11:46:03.468479" level="INFO">${stamp} = 20260915114603</msg>
+<var>${stamp}</var>
+<arg>result_format=%Y%m%d%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.468161" elapsed="0.000353"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-09-15T11:46:03.468965" level="INFO">${email} = robot20260915114603@example.com</msg>
+<var>${email}</var>
+<arg>robot${stamp}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.468625" elapsed="0.000366"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-09-15T11:46:03.469392" level="INFO">${TEST_EMAIL} = robot20260915114603@example.com</msg>
+<arg>${TEST_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.469113" elapsed="0.000319"/>
+</kw>
+<status status="PASS" start="2026-09-15T11:46:02.500185" elapsed="0.969345"/>
+</kw>
+<test id="s1-t1" name="TC_SEARCH_01 - Search Valid Product" line="98">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:46:03.470129" level="INFO">Opening url 'http://127.0.0.1:8000/search/'</msg>
+<arg>${BASE_URL}/search/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.470015" elapsed="0.099046"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:46:03.570096" level="INFO">Typing text 'SuperComputer' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>SuperComputer</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.569646" elapsed="0.112559"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:46:03.682891" level="INFO">Clicking button 'Search'.</msg>
+<arg>Search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.682630" elapsed="0.059518"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:46:03.798553" level="INFO">Current page contains text 'Results for'.</msg>
+<arg>Results for</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.742577" elapsed="0.056078"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T11:46:03.813464" level="INFO">Current page contains text 'SuperComputer'.</msg>
+<arg>SuperComputer</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.798991" elapsed="0.014642"/>
+</kw>
+<doc>Verify an existing product can be searched.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.469589" elapsed="0.344476"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-09-15T11:46:03.815438" elapsed="2.223467"/>
+</kw>
+<doc>Automated Functional Testing for E-Commerce System</doc>
+<status status="PASS" start="2026-09-15T11:46:02.218239" elapsed="3.820779"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ecommerce Tests" id="s1" pass="1" fail="0" skip="0">Ecommerce Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

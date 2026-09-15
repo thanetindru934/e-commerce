@@ -1,0 +1,1363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-09-15T14:09:43.952880" rpa="false" schemaversion="5">
+<suite id="s1" name="Ecommerce Tests" source="C:\CDU S2 2026\e-commerce-main\robot_tests\ecommerce_tests.robot">
+<kw name="Open E-Commerce Website" owner="ecommerce_resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:44.251742" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:8000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:44.251554" elapsed="2.227315"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.479141" elapsed="0.034894"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>10 seconds</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.514298" elapsed="0.003915"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2026-09-15T14:09:46.518698" level="INFO">${stamp} = 20260915140946518589</msg>
+<var>${stamp}</var>
+<arg>result_format=%Y%m%d%H%M%S%f</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.518396" elapsed="0.000334"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-15T14:09:46.519134" level="INFO">${random} = miz77h</msg>
+<var>${random}</var>
+<arg>6</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.518839" elapsed="0.000319"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-09-15T14:09:46.519550" level="INFO">${email} = robot_20260915140946518589_miz77h@example.com</msg>
+<var>${email}</var>
+<arg>robot_${stamp}_${random}@example.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.519255" elapsed="0.000316"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-09-15T14:09:46.520846" level="INFO">${TEST_EMAIL} = robot_20260915140946518589_miz77h@example.com</msg>
+<arg>${TEST_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.519681" elapsed="0.001208"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:44.251079" elapsed="2.269890"/>
+</kw>
+<test id="s1-t1" name="TC_REG_01 - Register With Valid Details" line="10">
+<kw name="Register Test Customer" owner="ecommerce_resources">
+<kw name="Go To Registration" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:46.522214" level="INFO">Opening url 'http://127.0.0.1:8000/register/'</msg>
+<arg>${BASE_URL}/register/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.522097" elapsed="0.069813"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:46.521948" elapsed="0.070158"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:46.592913" level="INFO">Typing text 'Robot Test Customer' into text field 'id=id_full_name'.</msg>
+<arg>id=id_full_name</arg>
+<arg>Robot Test Customer</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.592302" elapsed="0.074917"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:46.668585" level="INFO">Typing text 'robot_20260915140946518589_miz77h@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>${TEST_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.667711" elapsed="0.080298"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:46.750474" level="INFO">Typing password into text field 'id=id_password1'.</msg>
+<msg time="2026-09-15T14:09:46.772508" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password1</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.748299" elapsed="0.061596"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:46.810897" level="INFO">Typing password into text field 'id=id_password2'.</msg>
+<msg time="2026-09-15T14:09:46.835596" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password2</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.810283" elapsed="0.077078"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:46.888202" level="INFO">Clicking button 'Register'.</msg>
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.887764" elapsed="0.057507"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:46.521708" elapsed="0.423751"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.313605" level="INFO">Current location is 'http://127.0.0.1:8000/login/'.</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.946048" elapsed="1.367674"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.346133" level="INFO">Current page contains text 'Login'.</msg>
+<arg>Login</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.314633" elapsed="0.031741"/>
+</kw>
+<doc>Verify registration using valid customer information.</doc>
+<status status="PASS" start="2026-09-15T14:09:46.521040" elapsed="1.836313"/>
+</test>
+<test id="s1-t2" name="TC_REG_02 - Register With Existing Email" line="17">
+<kw name="Go To Registration" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.359279" level="INFO">Opening url 'http://127.0.0.1:8000/register/'</msg>
+<arg>${BASE_URL}/register/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.359165" elapsed="0.072313"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:48.358941" elapsed="0.072637"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.432289" level="INFO">Typing text 'Duplicate Customer' into text field 'id=id_full_name'.</msg>
+<arg>id=id_full_name</arg>
+<arg>Duplicate Customer</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.431865" elapsed="0.113658"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.546072" level="INFO">Typing text 'robot_20260915140946518589_miz77h@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>${TEST_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.545812" elapsed="0.142931"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.689323" level="INFO">Typing password into text field 'id=id_password1'.</msg>
+<msg time="2026-09-15T14:09:48.736181" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password1</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.689053" elapsed="0.084237"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.774067" level="INFO">Typing password into text field 'id=id_password2'.</msg>
+<msg time="2026-09-15T14:09:48.794198" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password2</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.773795" elapsed="0.061243"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.835600" level="INFO">Clicking button 'Register'.</msg>
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.835383" elapsed="0.075899"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.955275" level="INFO">Current location is 'http://127.0.0.1:8000/register/'.</msg>
+<arg>${BASE_URL}/register/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.911971" elapsed="0.043507"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.968829" level="INFO">Current page contains text 'already exists'.</msg>
+<arg>already exists</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.956159" elapsed="0.012793"/>
+</kw>
+<doc>Verify duplicate email registration is rejected.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.358397" elapsed="0.610949"/>
+</test>
+<test id="s1-t3" name="TC_REG_03 - Register With Empty Required Fields" line="29">
+<kw name="Go To Registration" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:48.971241" level="INFO">Opening url 'http://127.0.0.1:8000/register/'</msg>
+<arg>${BASE_URL}/register/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.971015" elapsed="0.064697"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:48.970603" elapsed="0.065329"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.036583" level="INFO">Clicking button 'Register'.</msg>
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.036298" elapsed="0.073431"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.114902" level="INFO">Current location is 'http://127.0.0.1:8000/register/'.</msg>
+<arg>${BASE_URL}/register/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.110251" elapsed="0.004740"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.128680" level="INFO">Current page contains text 'Register'.</msg>
+<arg>Register</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.115309" elapsed="0.013489"/>
+</kw>
+<doc>Verify required registration fields are validated.</doc>
+<status status="PASS" start="2026-09-15T14:09:48.969783" elapsed="0.159340"/>
+</test>
+<test id="s1-t4" name="TC_LOGIN_01 - Login With Valid Credentials" line="37">
+<kw name="Go To Login" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.130494" level="INFO">Opening url 'http://127.0.0.1:8000/login/'</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.130339" elapsed="0.061742"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:49.130067" elapsed="0.062154"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.192978" level="INFO">Typing text 'robot_20260915140946518589_miz77h@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>${TEST_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.192598" elapsed="0.095404"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.288807" level="INFO">Typing password into text field 'id=id_password'.</msg>
+<msg time="2026-09-15T14:09:49.320800" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.288437" elapsed="0.095585"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:49.384726" level="INFO">Clicking button 'Login'.</msg>
+<arg>Login</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.384439" elapsed="0.064125"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Logout</arg>
+<arg>10 seconds</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.449208" elapsed="1.162314"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:50.687081" level="INFO">Current page contains text 'Logout'.</msg>
+<arg>Logout</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:50.653666" elapsed="0.033587"/>
+</kw>
+<doc>Verify registered customer can login.</doc>
+<status status="PASS" start="2026-09-15T14:09:49.129603" elapsed="1.579915"/>
+</test>
+<test id="s1-t5" name="TC_LOGIN_02 - Login With Incorrect Password" line="47">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:50.719593" level="INFO">Opening url 'http://127.0.0.1:8000/logout/'</msg>
+<arg>${BASE_URL}/logout/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:50.719338" elapsed="0.099083"/>
+</kw>
+<kw name="Go To Login" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:50.819677" level="INFO">Opening url 'http://127.0.0.1:8000/login/'</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:50.819378" elapsed="0.045592"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:50.819032" elapsed="0.046099"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:50.866229" level="INFO">Typing text 'robot_20260915140946518589_miz77h@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>${TEST_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:50.865730" elapsed="0.136842"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:51.003254" level="INFO">Typing password into text field 'id=id_password'.</msg>
+<msg time="2026-09-15T14:09:51.037533" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password</arg>
+<arg>WrongPassword123</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:51.002952" elapsed="0.126578"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:51.130261" level="INFO">Clicking button 'Login'.</msg>
+<arg>Login</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:51.129946" elapsed="0.060654"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:51.196323" level="INFO">Current location is 'http://127.0.0.1:8000/login/'.</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:51.191356" elapsed="0.005067"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:52.021780" level="INFO">Current page contains text 'Login'.</msg>
+<arg>Login</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:51.196883" elapsed="0.825035"/>
+</kw>
+<doc>Verify login is rejected for an incorrect password.</doc>
+<status status="PASS" start="2026-09-15T14:09:50.718725" elapsed="1.306389"/>
+</test>
+<test id="s1-t6" name="TC_LOGIN_03 - Login With Unregistered Email" line="58">
+<kw name="Go To Login" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:52.029387" level="INFO">Opening url 'http://127.0.0.1:8000/login/'</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:52.029223" elapsed="0.062231"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:52.028919" elapsed="0.062675"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:52.095907" level="INFO">Typing text 'nobody_robot@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>nobody_robot@example.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:52.094896" elapsed="0.190232"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:52.286304" level="INFO">Typing password into text field 'id=id_password'.</msg>
+<msg time="2026-09-15T14:09:52.313059" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:52.285917" elapsed="0.072934"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:52.359559" level="INFO">Clicking button 'Login'.</msg>
+<arg>Login</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:52.359267" elapsed="0.801580"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.179874" level="INFO">Current location is 'http://127.0.0.1:8000/login/'.</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.173141" elapsed="0.006842"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.243266" level="INFO">Current page contains text 'Login'.</msg>
+<arg>Login</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.180297" elapsed="0.063093"/>
+</kw>
+<doc>Verify an unregistered customer cannot login.</doc>
+<status status="PASS" start="2026-09-15T14:09:52.028203" elapsed="1.219110"/>
+</test>
+<test id="s1-t7" name="TC_LOGIN_04 - Login With Empty Fields" line="68">
+<kw name="Go To Login" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.255956" level="INFO">Opening url 'http://127.0.0.1:8000/login/'</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.255774" elapsed="0.047707"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:53.255382" elapsed="0.048252"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.304326" level="INFO">Clicking button 'Login'.</msg>
+<arg>Login</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.304006" elapsed="0.068848"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.380806" level="INFO">Current location is 'http://127.0.0.1:8000/login/'.</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.374616" elapsed="0.006286"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.391971" level="INFO">Current page contains text 'Login'.</msg>
+<arg>Login</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.381306" elapsed="0.010779"/>
+</kw>
+<doc>Verify required login fields are validated.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.254470" elapsed="0.137992"/>
+</test>
+<test id="s1-t8" name="TC_PROD_01 - Display Product List" line="76">
+<kw name="Go To Products" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.394046" level="INFO">Opening url 'http://127.0.0.1:8000/products/'</msg>
+<arg>${BASE_URL}/products/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.393877" elapsed="0.093860"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:53.393569" elapsed="0.094326"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.499364" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>T-Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.488368" elapsed="0.011139"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.511838" level="INFO">Current page contains text 'Hat'.</msg>
+<arg>Hat</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.499961" elapsed="0.012038"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.525695" level="INFO">Current page contains text 'SuperComputer'.</msg>
+<arg>SuperComputer</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.512472" elapsed="0.013349"/>
+</kw>
+<doc>Verify available products are displayed.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.393055" elapsed="0.133076"/>
+</test>
+<test id="s1-t9" name="TC_PROD_02 - View Product Details" line="84">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.527626" level="INFO">Opening url 'http://127.0.0.1:8000/products/t-shirt-6qp8/'</msg>
+<arg>${BASE_URL}/products/t-shirt-6qp8/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.527383" elapsed="0.110792"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.646930" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>T-Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.638652" elapsed="0.008384"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.657742" level="INFO">Current page contains text 'This is an awesome T Shirt'.</msg>
+<arg>This is an awesome T Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.647424" elapsed="0.010434"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.669247" level="INFO">Current page contains text 'Add to Cart'.</msg>
+<arg>Add to Cart</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.658281" elapsed="0.011127"/>
+</kw>
+<doc>Verify product details are displayed correctly.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.526579" elapsed="0.143416"/>
+</test>
+<test id="s1-t10" name="TC_PROD_03 - Verify Product Image" line="92">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.671469" level="INFO">Opening url 'http://127.0.0.1:8000/products/t-shirt-6qp8/'</msg>
+<arg>${BASE_URL}/products/t-shirt-6qp8/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.671250" elapsed="0.053384"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.736136" level="INFO">Current page contains element 'xpath=//img[contains(@class,'img-fluid')]'.</msg>
+<arg>xpath=//img[contains(@class,'img-fluid')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.725181" elapsed="0.011079"/>
+</kw>
+<doc>Verify the product image is displayed correctly.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.670724" elapsed="0.066003"/>
+</test>
+<test id="s1-t11" name="TC_SEARCH_01 - Search Valid Product" line="98">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.738265" level="INFO">Opening url 'http://127.0.0.1:8000/search/'</msg>
+<arg>${BASE_URL}/search/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.737958" elapsed="0.070970"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.809886" level="INFO">Typing text 'SuperComputer' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>SuperComputer</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.809482" elapsed="0.115207"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:53.925820" level="INFO">Clicking button 'Search'.</msg>
+<arg>Search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.925416" elapsed="0.099910"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.064143" level="INFO">Current page contains text 'Results for'.</msg>
+<arg>Results for</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.025717" elapsed="0.038610"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.073906" level="INFO">Current page contains text 'SuperComputer'.</msg>
+<arg>SuperComputer</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.064904" elapsed="0.009122"/>
+</kw>
+<doc>Verify an existing product can be searched.</doc>
+<status status="PASS" start="2026-09-15T14:09:53.737366" elapsed="0.337220"/>
+</test>
+<test id="s1-t12" name="TC_SEARCH_02 - Search Non-Existent Product" line="107">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.077063" level="INFO">Opening url 'http://127.0.0.1:8000/search/'</msg>
+<arg>${BASE_URL}/search/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.076774" elapsed="0.059999"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.137664" level="INFO">Typing text 'RobotProductDoesNotExist999' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>RobotProductDoesNotExist999</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.137247" elapsed="0.091633"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.229850" level="INFO">Clicking button 'Search'.</msg>
+<arg>Search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.229404" elapsed="0.068303"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.356274" level="INFO">Current location contains '/search/'.</msg>
+<arg>/search/</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.298146" elapsed="0.058251"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.374427" level="INFO">Current page does not contain text 'SuperComputer'.</msg>
+<arg>SuperComputer</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.356867" elapsed="0.017662"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.390036" level="INFO">Current page does not contain text 'Server Error'.</msg>
+<arg>Server Error</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.374902" elapsed="0.015217"/>
+</kw>
+<doc>Verify search handles a product that does not exist.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.075921" elapsed="0.314605"/>
+</test>
+<test id="s1-t13" name="TC_SEARCH_03 - Search With Empty Keyword" line="118">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.391932" level="INFO">Opening url 'http://127.0.0.1:8000/search/'</msg>
+<arg>${BASE_URL}/search/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.391738" elapsed="0.051960"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.444819" level="INFO">Clicking button 'Search'.</msg>
+<arg>Search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.444360" elapsed="0.109026"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.608170" level="INFO">Current page does not contain text 'Server Error'.</msg>
+<arg>Server Error</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.553910" elapsed="0.054388"/>
+</kw>
+<doc>Verify an empty search does not cause an application error.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.391132" elapsed="0.217639"/>
+</test>
+<test id="s1-t14" name="TC_CART_01 - Add One Product To Cart" line="125">
+<kw name="Add T-Shirt To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.610798" level="INFO">Opening url 'http://127.0.0.1:8000/products/t-shirt-6qp8/'</msg>
+<arg>${BASE_URL}/products/t-shirt-6qp8/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.610600" elapsed="0.060010"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.886816" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-87.png"&gt;&lt;img src="selenium-screenshot-87.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:09:54.887023" level="FAIL">Page should have contained button 'Remove?' but did not.</msg>
+<arg>Remove?</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="FAIL" start="2026-09-15T14:09:54.671908" elapsed="0.218190">Page should have contained button 'Remove?' but did not.</status>
+</kw>
+<msg time="2026-09-15T14:09:54.890310" level="INFO">${remove} = False</msg>
+<var>${remove}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Remove?</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.670859" elapsed="0.219486"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${remove}">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:54.890973" level="INFO">Clicking button 'Add to Cart'.</msg>
+<arg>Add to Cart</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.890737" elapsed="0.208647"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:54.890475" elapsed="0.209020"/>
+</branch>
+<status status="PASS" start="2026-09-15T14:09:54.890437" elapsed="0.209145"/>
+</if>
+<status status="PASS" start="2026-09-15T14:09:54.610269" elapsed="0.489520"/>
+</kw>
+<kw name="Go To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.107453" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.107192" elapsed="0.070616"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:55.106651" elapsed="0.071324"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.197088" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>T-Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.178814" elapsed="0.018397"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.241825" level="INFO">Current page contains text 'Subtotal'.</msg>
+<arg>Subtotal</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.206962" elapsed="0.034989"/>
+</kw>
+<doc>Verify a product can be added to the shopping cart.</doc>
+<status status="PASS" start="2026-09-15T14:09:54.609555" elapsed="0.661539"/>
+</test>
+<test id="s1-t15" name="TC_CART_02 - Add Multiple Products" line="133">
+<kw name="Add Hat To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.275250" level="INFO">Opening url 'http://127.0.0.1:8000/products/hat/'</msg>
+<arg>${BASE_URL}/products/hat/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.275074" elapsed="0.118465"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.637416" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-88.png"&gt;&lt;img src="selenium-screenshot-88.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:09:55.637801" level="FAIL">Page should have contained button 'Remove?' but did not.</msg>
+<arg>Remove?</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="FAIL" start="2026-09-15T14:09:55.394175" elapsed="0.245156">Page should have contained button 'Remove?' but did not.</status>
+</kw>
+<msg time="2026-09-15T14:09:55.639550" level="INFO">${remove} = False</msg>
+<var>${remove}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Remove?</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.393777" elapsed="0.245804"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${remove}">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.640377" level="INFO">Clicking button 'Add to Cart'.</msg>
+<arg>Add to Cart</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.640066" elapsed="0.202826"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:55.639751" elapsed="0.203249"/>
+</branch>
+<status status="PASS" start="2026-09-15T14:09:55.639700" elapsed="0.203365"/>
+</if>
+<status status="PASS" start="2026-09-15T14:09:55.274770" elapsed="0.568361"/>
+</kw>
+<kw name="Go To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.844215" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.843993" elapsed="0.049397"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:55.843554" elapsed="0.049980"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.904750" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>T-Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.893919" elapsed="0.010953"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.920261" level="INFO">Current page contains text 'Hat'.</msg>
+<arg>Hat</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.905296" elapsed="0.015093"/>
+</kw>
+<doc>Verify multiple products can be added to the cart.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.274063" elapsed="0.646728"/>
+</test>
+<test id="s1-t16" name="TC_CART_03 - Remove Product From Cart" line="141">
+<kw name="Go To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.922376" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.922215" elapsed="0.044084"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:55.921933" elapsed="0.044556"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:55.978887" level="INFO">Clicking button 'Remove?'.</msg>
+<arg>Remove?</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.978353" elapsed="0.086532"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.214132" level="INFO">Current page contains text 'Cart'.</msg>
+<arg>Cart</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.065882" elapsed="0.148374"/>
+</kw>
+<doc>Verify a product can be removed and the cart updates.</doc>
+<status status="PASS" start="2026-09-15T14:09:55.921395" elapsed="0.293241"/>
+</test>
+<test id="s1-t17" name="TC_CART_04 - Verify Cart Total" line="148">
+<kw name="Add T-Shirt To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.217646" level="INFO">Opening url 'http://127.0.0.1:8000/products/t-shirt-6qp8/'</msg>
+<arg>${BASE_URL}/products/t-shirt-6qp8/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.217449" elapsed="0.056376"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.506401" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-89.png"&gt;&lt;img src="selenium-screenshot-89.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:09:56.506590" level="FAIL">Page should have contained button 'Remove?' but did not.</msg>
+<arg>Remove?</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="FAIL" start="2026-09-15T14:09:56.274474" elapsed="0.233758">Page should have contained button 'Remove?' but did not.</status>
+</kw>
+<msg time="2026-09-15T14:09:56.508456" level="INFO">${remove} = False</msg>
+<var>${remove}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Remove?</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.274067" elapsed="0.234431"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${remove}">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.509334" level="INFO">Clicking button 'Add to Cart'.</msg>
+<arg>Add to Cart</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.508979" elapsed="0.171291"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:56.508656" elapsed="0.171719"/>
+</branch>
+<status status="PASS" start="2026-09-15T14:09:56.508617" elapsed="0.171816"/>
+</if>
+<status status="PASS" start="2026-09-15T14:09:56.217126" elapsed="0.463375"/>
+</kw>
+<kw name="Go To Cart" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.682392" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.681850" elapsed="0.072012"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:56.681521" elapsed="0.072523"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.763735" level="INFO">Current page contains text 'Subtotal'.</msg>
+<arg>Subtotal</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.754549" elapsed="0.009306"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.776091" level="INFO">Current page contains text 'Total'.</msg>
+<arg>Total</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.764256" elapsed="0.011972"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.786070" level="INFO">Current page contains element 'xpath=//*[contains(text(),'Subtotal')]'.</msg>
+<arg>xpath=//*[contains(text(),'Subtotal')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.776668" elapsed="0.009518"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.794944" level="INFO">Current page contains element 'xpath=//*[contains(text(),'Total')]'.</msg>
+<arg>xpath=//*[contains(text(),'Total')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.786869" elapsed="0.008191"/>
+</kw>
+<doc>Verify the cart displays subtotal and total values.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.215220" elapsed="0.580303"/>
+</test>
+<test id="s1-t18" name="TC_CHECK_01 - Checkout With Valid Information" line="158">
+<kw name="Login Test Customer" owner="ecommerce_resources">
+<kw name="Go To Login" owner="ecommerce_resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.797554" level="INFO">Opening url 'http://127.0.0.1:8000/login/'</msg>
+<arg>${BASE_URL}/login/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.797387" elapsed="0.069297"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:56.797160" elapsed="0.069733"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:56.867537" level="INFO">Typing text 'robot_20260915140946518589_miz77h@example.com' into text field 'id=id_email'.</msg>
+<arg>id=id_email</arg>
+<arg>${TEST_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.867091" elapsed="0.135939"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:57.003624" level="INFO">Typing password into text field 'id=id_password'.</msg>
+<msg time="2026-09-15T14:09:57.057729" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:57.003269" elapsed="0.101582"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:57.105486" level="INFO">Clicking button 'Login'.</msg>
+<arg>Login</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:57.105159" elapsed="0.919536"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:09:56.796835" elapsed="1.228001"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.025787" level="INFO">Opening url 'http://127.0.0.1:8000/products/t-shirt-6qp8/'</msg>
+<arg>${BASE_URL}/products/t-shirt-6qp8/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.025556" elapsed="0.068016"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.403263" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-90.png"&gt;&lt;img src="selenium-screenshot-90.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:09:58.403508" level="FAIL">Page should have contained button 'Add to Cart' but did not.</msg>
+<arg>Add to Cart</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="FAIL" start="2026-09-15T14:09:58.111103" elapsed="0.293824">Page should have contained button 'Add to Cart' but did not.</status>
+</kw>
+<msg time="2026-09-15T14:09:58.405201" level="INFO">${add_exists} = False</msg>
+<var>${add_exists}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Add to Cart</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.110460" elapsed="0.294779"/>
+</kw>
+<if>
+<branch type="IF" condition="${add_exists}">
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>Add to Cart</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:09:58.406012" elapsed="0.000039"/>
+</kw>
+<status status="NOT RUN" start="2026-09-15T14:09:58.405721" elapsed="0.000378"/>
+</branch>
+<status status="PASS" start="2026-09-15T14:09:58.405665" elapsed="0.000480"/>
+</if>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.406592" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.406344" elapsed="0.121043"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.571576" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>T-Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.529297" elapsed="0.042403"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.573887" level="INFO">Opening url 'http://127.0.0.1:8000/cart/checkout/'</msg>
+<arg>${BASE_URL}/cart/checkout/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.573546" elapsed="0.274352"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.864826" level="INFO">Current page contains text 'Shipping Address'.</msg>
+<arg>Shipping Address</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.848451" elapsed="0.016540"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.866181" level="INFO">Typing text '1 Robot Street' into text field 'id=id_address_line_1'.</msg>
+<arg>id=id_address_line_1</arg>
+<arg>1 Robot Street</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.865616" elapsed="0.095892"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:58.963438" level="INFO">Typing text 'Test Building' into text field 'id=id_address_line_2'.</msg>
+<arg>id=id_address_line_2</arg>
+<arg>Test Building</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:58.963070" elapsed="0.088422"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.052313" level="INFO">Typing text 'Darwin' into text field 'id=id_city'.</msg>
+<arg>id=id_city</arg>
+<arg>Darwin</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.051968" elapsed="0.089035"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.144174" level="INFO">Typing text 'Australia' into text field 'id=id_country'.</msg>
+<arg>id=id_country</arg>
+<arg>Australia</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.143618" elapsed="0.111213"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.255761" level="INFO">Typing text 'NT' into text field 'id=id_state'.</msg>
+<arg>id=id_state</arg>
+<arg>NT</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.255355" elapsed="0.081523"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.338076" level="INFO">Typing text '0800' into text field 'id=id_postal_code'.</msg>
+<arg>id=id_postal_code</arg>
+<arg>0800</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.337553" elapsed="0.081035"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.419667" level="INFO">Clicking button 'Submit'.</msg>
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.419356" elapsed="0.288576"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.723054" level="INFO">Current page contains text 'Billing Address'.</msg>
+<arg>Billing Address</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.708292" elapsed="0.014895"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.723928" level="INFO">Typing text '1 Robot Street' into text field 'id=id_address_line_1'.</msg>
+<arg>id=id_address_line_1</arg>
+<arg>1 Robot Street</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.723611" elapsed="0.086335"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.811057" level="INFO">Typing text 'Test Building' into text field 'id=id_address_line_2'.</msg>
+<arg>id=id_address_line_2</arg>
+<arg>Test Building</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.810721" elapsed="0.101846"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:09:59.913635" level="INFO">Typing text 'Darwin' into text field 'id=id_city'.</msg>
+<arg>id=id_city</arg>
+<arg>Darwin</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:09:59.913113" elapsed="0.103884"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.023938" level="INFO">Typing text 'Australia' into text field 'id=id_country'.</msg>
+<arg>id=id_country</arg>
+<arg>Australia</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.023574" elapsed="0.120626"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.145461" level="INFO">Typing text 'NT' into text field 'id=id_state'.</msg>
+<arg>id=id_state</arg>
+<arg>NT</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.145104" elapsed="0.104629"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.251283" level="INFO">Typing text '0800' into text field 'id=id_postal_code'.</msg>
+<arg>id=id_postal_code</arg>
+<arg>0800</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.250803" elapsed="0.086296"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.338025" level="INFO">Clicking button 'Submit'.</msg>
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.337679" elapsed="0.185471"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.553970" level="INFO">Current page contains text 'Finalize Checkout'.</msg>
+<arg>Finalize Checkout</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.527587" elapsed="0.026512"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.554868" level="INFO">Clicking button 'Finalize Checkout'.</msg>
+<arg>Finalize Checkout</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.554522" elapsed="0.186933"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.785545" level="INFO">Current page contains text 'Thank you for your order'.</msg>
+<arg>Thank you for your order</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.770311" elapsed="0.015357"/>
+</kw>
+<doc>Verify checkout proceeds with valid information.</doc>
+<status status="PASS" start="2026-09-15T14:09:56.796189" elapsed="3.990290"/>
+</test>
+<test id="s1-t19" name="TC_CHECK_02 - Checkout With Missing Required Information" line="200">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.788151" level="INFO">Opening url 'http://127.0.0.1:8000/products/t-shirt-6qp8/'</msg>
+<arg>${BASE_URL}/products/t-shirt-6qp8/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.787912" elapsed="0.106981"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.921398" level="INFO">Current page contains button 'Add to Cart'.</msg>
+<arg>Add to Cart</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.895845" elapsed="0.025684"/>
+</kw>
+<msg time="2026-09-15T14:10:00.921720" level="INFO">${add_exists} = True</msg>
+<var>${add_exists}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Add to Cart</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.895426" elapsed="0.026323"/>
+</kw>
+<if>
+<branch type="IF" condition="${add_exists}">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:00.923669" level="INFO">Clicking button 'Add to Cart'.</msg>
+<arg>Add to Cart</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.923381" elapsed="0.134374"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:10:00.923145" elapsed="0.134731"/>
+</branch>
+<status status="PASS" start="2026-09-15T14:10:00.923101" elapsed="0.134840"/>
+</if>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.058723" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.058465" elapsed="0.068880"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.138121" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>T-Shirt</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.127845" elapsed="0.010393"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.138813" level="INFO">Opening url 'http://127.0.0.1:8000/cart/checkout/'</msg>
+<arg>${BASE_URL}/cart/checkout/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.138597" elapsed="0.122707"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.271226" level="INFO">Current page contains text 'Shipping Address'.</msg>
+<arg>Shipping Address</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.261671" elapsed="0.009678"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.272604" level="INFO">Clicking button 'Submit'.</msg>
+<arg>Submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.272284" elapsed="0.071596"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.348440" level="INFO">Current location contains '/cart/checkout/'.</msg>
+<arg>/cart/checkout/</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.344326" elapsed="0.004210"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.362158" level="INFO">Current page contains text 'Shipping Address'.</msg>
+<arg>Shipping Address</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.350565" elapsed="0.011709"/>
+</kw>
+<doc>Verify required checkout information is validated.</doc>
+<status status="PASS" start="2026-09-15T14:10:00.787251" elapsed="0.575369"/>
+</test>
+<test id="s1-t20" name="TC_CHECK_03 - Checkout With Empty Cart" line="223">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.364020" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.363764" elapsed="0.077883"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.460149" level="INFO">Current page contains button 'Remove?'.</msg>
+<arg>Remove?</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.442469" elapsed="0.017802"/>
+</kw>
+<msg time="2026-09-15T14:10:01.460438" level="INFO">${remove} = True</msg>
+<var>${remove}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Remove?</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.442056" elapsed="0.018410"/>
+</kw>
+<while condition="${remove}">
+<iter>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.461376" level="INFO">Clicking button 'Remove?'.</msg>
+<arg>Remove?</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.461115" elapsed="0.177803"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.639369" level="INFO">Opening url 'http://127.0.0.1:8000/cart/'</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.639154" elapsed="0.071108"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.886745" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-91.png"&gt;&lt;img src="selenium-screenshot-91.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:10:01.886928" level="FAIL">Page should have contained button 'Remove?' but did not.</msg>
+<arg>Remove?</arg>
+<doc>Verifies button ``locator`` is found from current page.</doc>
+<status status="FAIL" start="2026-09-15T14:10:01.710999" elapsed="0.177430">Page should have contained button 'Remove?' but did not.</status>
+</kw>
+<msg time="2026-09-15T14:10:01.888638" level="INFO">${remove} = False</msg>
+<var>${remove}</var>
+<arg>Page Should Contain Button</arg>
+<arg>Remove?</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.710557" elapsed="0.178117"/>
+</kw>
+<status status="PASS" start="2026-09-15T14:10:01.460759" elapsed="0.427971"/>
+</iter>
+<status status="PASS" start="2026-09-15T14:10:01.460756" elapsed="0.428134"/>
+</while>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.889417" level="INFO">Opening url 'http://127.0.0.1:8000/cart/checkout/'</msg>
+<arg>${BASE_URL}/cart/checkout/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.889213" elapsed="0.079185"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.973734" level="INFO">Current location is 'http://127.0.0.1:8000/cart/'.</msg>
+<arg>${BASE_URL}/cart/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.968887" elapsed="0.004949"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:01.985914" level="INFO">Current page contains text 'Cart is empty'.</msg>
+<arg>Cart is empty</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.974206" elapsed="0.011896"/>
+</kw>
+<doc>Verify checkout cannot proceed with an empty cart.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.363232" elapsed="0.623314"/>
+</test>
+<test id="s1-t21" name="TC_ADMIN_01 - Admin Adds New Product" line="242">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-09-15T14:10:01.987475" elapsed="0.053753"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:02.041936" level="INFO">Opening url 'http://127.0.0.1:8000/admin/'</msg>
+<arg>${BASE_URL}/admin/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:02.041664" elapsed="0.083117"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:02.126018" level="INFO">Typing text 'robotadmin@example.com' into text field 'id=id_username'.</msg>
+<arg>id=id_username</arg>
+<arg>${ADMIN_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:02.125392" elapsed="0.089391"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:02.216285" level="INFO">Typing password into text field 'id=id_password'.</msg>
+<msg time="2026-09-15T14:10:02.244677" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=id_password</arg>
+<arg>${ADMIN_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:02.215789" elapsed="0.114805"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:02.331341" level="INFO">Clicking button 'Log in'.</msg>
+<arg>Log in</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-09-15T14:10:02.331048" elapsed="0.064733"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:02.396550" level="INFO">Opening url 'http://127.0.0.1:8000/admin/products/product/add/'</msg>
+<arg>${BASE_URL}/admin/products/product/add/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:02.396247" elapsed="0.815006"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:03.212776" level="INFO">Typing text 'Robot Test Product' into text field 'id=id_title'.</msg>
+<msg time="2026-09-15T14:10:03.410358" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-92.png"&gt;&lt;img src="selenium-screenshot-92.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:10:03.410686" level="FAIL">Element with locator 'id=id_title' not found.</msg>
+<arg>id=id_title</arg>
+<arg>Robot Test Product</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="FAIL" start="2026-09-15T14:10:03.212406" elapsed="0.201652">Element with locator 'id=id_title' not found.</status>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id=id_description</arg>
+<arg>Product created by Robot Framework</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.414707" elapsed="0.000067"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id=id_price</arg>
+<arg>25.00</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.415113" elapsed="0.000050"/>
+</kw>
+<kw name="Select Checkbox" owner="SeleniumLibrary">
+<arg>id=id_featured</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.416178" elapsed="0.000120"/>
+</kw>
+<kw name="Select Checkbox" owner="SeleniumLibrary">
+<arg>id=id_active</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.416809" elapsed="0.000039"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>Save</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.417374" elapsed="0.000064"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${BASE_URL}/admin/products/product/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.418372" elapsed="0.000056"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>Robot Test Product</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.420074" elapsed="0.000052"/>
+</kw>
+<doc>Verify an administrator can create a product.</doc>
+<status status="FAIL" start="2026-09-15T14:10:01.987029" elapsed="1.433729">Element with locator 'id=id_title' not found.</status>
+</test>
+<test id="s1-t22" name="TC_ADMIN_02 - Admin Edits Product" line="264">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:03.422862" level="INFO">Opening url 'http://127.0.0.1:8000/admin/products/product/'</msg>
+<arg>${BASE_URL}/admin/products/product/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:03.422422" elapsed="0.156157"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:03.579295" level="INFO">Clicking link 'Robot Test Product'.</msg>
+<msg time="2026-09-15T14:10:03.776775" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-93.png"&gt;&lt;img src="selenium-screenshot-93.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:10:03.777103" level="FAIL">Link with locator 'Robot Test Product' not found.</msg>
+<arg>Robot Test Product</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2026-09-15T14:10:03.579009" elapsed="0.200063">Link with locator 'Robot Test Product' not found.</status>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>id=id_title</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.779444" elapsed="0.000047"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id=id_title</arg>
+<arg>Robot Test Product Updated</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.779721" elapsed="0.000035"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>Save</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.780193" elapsed="0.000044"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>Robot Test Product Updated</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:03.780438" elapsed="0.000031"/>
+</kw>
+<doc>Verify an administrator can modify a product.</doc>
+<status status="FAIL" start="2026-09-15T14:10:03.421997" elapsed="0.358905">Link with locator 'Robot Test Product' not found.</status>
+</test>
+<test id="s1-t23" name="TC_ADMIN_03 - Admin Deletes Product" line="276">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:03.782450" level="INFO">Opening url 'http://127.0.0.1:8000/admin/products/product/'</msg>
+<arg>${BASE_URL}/admin/products/product/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:03.781723" elapsed="0.081614"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:03.864654" level="INFO">Clicking link 'Robot Test Product Updated'.</msg>
+<msg time="2026-09-15T14:10:04.074944" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-94.png"&gt;&lt;img src="selenium-screenshot-94.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-15T14:10:04.075271" level="FAIL">Link with locator 'Robot Test Product Updated' not found.</msg>
+<arg>Robot Test Product Updated</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2026-09-15T14:10:03.864262" elapsed="0.213204">Link with locator 'Robot Test Product Updated' not found.</status>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>Delete</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:04.078195" elapsed="0.000072"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>Yes, I’m sure</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:04.078572" elapsed="0.000049"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<arg>/admin/products/product/</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:04.078868" elapsed="0.000044"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>was deleted successfully</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2026-09-15T14:10:04.079157" elapsed="0.000045"/>
+</kw>
+<doc>Verify an administrator can delete a product.</doc>
+<status status="FAIL" start="2026-09-15T14:10:03.781282" elapsed="0.298250">Link with locator 'Robot Test Product Updated' not found.</status>
+</test>
+<test id="s1-t24" name="TC_ADMIN_04 - Customer Attempts Admin Access" line="287">
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.080675" elapsed="0.084724"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:04.166200" level="INFO">Opening url 'http://127.0.0.1:8000/admin/products/product/'</msg>
+<arg>${BASE_URL}/admin/products/product/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.165921" elapsed="0.075231"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:04.249011" level="INFO">Current location contains '/admin/login/'.</msg>
+<arg>/admin/login/</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.241600" elapsed="0.007641"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:04.259040" level="INFO">Current page contains element 'id=id_username'.</msg>
+<arg>id=id_username</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.250042" elapsed="0.009103"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:04.272450" level="INFO">Current page contains element 'id=id_password'.</msg>
+<arg>id=id_password</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.259595" elapsed="0.012966"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-09-15T14:10:04.295041" level="INFO">Current page does not contain text 'Add product'.</msg>
+<arg>Add product</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.273365" elapsed="0.021792"/>
+</kw>
+<doc>Verify a normal customer cannot access admin functionality.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.080084" elapsed="0.215434"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-09-15T14:10:04.297176" elapsed="2.339643"/>
+</kw>
+<doc>Automated Functional Testing for E-Commerce System</doc>
+<status status="FAIL" start="2026-09-15T14:09:43.953981" elapsed="22.682954"/>
+</suite>
+<statistics>
+<total>
+<stat pass="21" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ecommerce Tests" id="s1" pass="21" fail="3" skip="0">Ecommerce Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
