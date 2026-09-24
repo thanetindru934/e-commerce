@@ -57,6 +57,7 @@ Login Test Customer
     Input Text        id=id_email       ${TEST_EMAIL}
     Input Password    id=id_password    ${TEST_PASSWORD}
     Click Button      Login
+    Wait Until Page Contains    Logout    5s
 
 
 Add T-Shirt To Cart
