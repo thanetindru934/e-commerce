@@ -477,6 +477,94 @@ TC_CHECK_09 - Checking login from checkout
     Page Should Contain    Shipping Address
 
 
+TC_CHECK_10 - Checks If Guest Checkout Option Is Shown
+    [Documentation]    Verify the guest checkout option is visible to a guest customer.
+
+    Delete All Cookies
+
+    Go To    ${BASE_URL}/products/t-shirt-6qp8/
+    Wait Until Page Contains    T-Shirt    5s
+
+    ${add_exists}=    Run Keyword And Return Status
+    ...    Page Should Contain Button    Add to Cart
+
+    IF    ${add_exists}
+        Click Button    Add to Cart
+    END
+
+    Go To    ${BASE_URL}/cart/checkout/
+    Wait Until Page Contains    Login    5s
+
+    Page Should Contain    Guest
+
+TC_CHECK_11 - Checking an Invalid Order Can Be Completed
+    [Documentation]    Verify if an invalid order cannot be completed successfully.
+
+    Delete All Cookies
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text        id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button      Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/add/
+    Wait Until Page Contains Element    id=id_title    5s
+
+    Input Text        id=id_title          Robot Invalid Order Test
+    Input Text        id=id_description    Product used to test invalid checkout
+    Input Text        id=id_price          -20.00
+    Select Checkbox   id=id_active
+    Click Button      Save
+
+    Wait Until Page Contains    Robot Invalid Order Test    5s
+
+    Delete All Cookies
+    Login Test Customer
+    Wait Until Page Contains    Logout    5s
+
+    Go To    ${BASE_URL}/products/robot-invalid-order-test/
+    Wait Until Page Contains    Robot Invalid Order Test    5s
+    Click Button    Add to Cart
+
+    Go To    ${BASE_URL}/cart/
+    Page Should Contain    Robot Invalid Order Test
+    Page Should Contain    -20.00
+
+    Go To    ${BASE_URL}/cart/checkout/
+    Page Should Contain    Shipping Address
+
+    Input Text    id=id_address_line_1    1 Robot Street
+    Input Text    id=id_address_line_2    Test Building
+    Input Text    id=id_city              Darwin
+    Input Text    id=id_country           Australia
+    Input Text    id=id_state             NT
+    Input Text    id=id_postal_code       0800
+    Click Button    Submit
+
+    Wait Until Page Contains    Billing Address    5s
+
+    Input Text    id=id_address_line_1    1 Robot Street
+    Input Text    id=id_address_line_2    Test Building
+    Input Text    id=id_city              Darwin
+    Input Text    id=id_country           Australia
+    Input Text    id=id_state             NT
+    Input Text    id=id_postal_code       0800
+    Click Button    Submit
+
+    Wait Until Page Contains    Finalize Checkout    5s
+
+    Page Should Contain    Order Total
+    Page Should Contain    -14.01
+
+    Click Button    Finalize Checkout
+
+    Page Should Not Contain    Thank you for your order
+
 TC_ADMIN_01 - Admin Adds New Product
     [Documentation]    Verify an administrator can create a product.
 
@@ -670,3 +758,230 @@ TC_ADMIN_12 - Checking if an inactive product is not visible in customer website
     Go To    ${BASE_URL}/products/
     Wait Until Page Contains    Products    5s
     Page Should Not Contain    Robot Test Inactive Product
+
+TC_ADMIN_13 - Admin Adds a Negative Priced Product
+    [Documentation]    Checks if the admin product rejects a negatvie valued product
+    
+    Delete All Cookies
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text    id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button    Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/add/
+    Wait Until Page Contains Element    id=id_title    5s
+
+    Input Text    id=id_title          Negative Price Test
+    Input Text    id=id_description    Product used to test negative price
+    Input Text    id=id_price          -20.00
+    Select Checkbox    id=id_active
+    Click Button    Save
+
+    Wait Until Page Contains    Negative Price Test    5s
+
+    Delete All Cookies
+    Login Test Customer
+    Wait Until Page Contains    Logout    5s
+
+    Go To    ${BASE_URL}/products/negative-price-test/
+    Wait Until Page Contains    Negative Price Test    5s
+    Click Button    Add to Cart
+
+    Go To    ${BASE_URL}/cart/
+    Wait Until Page Contains    Negative Price Test    5s
+
+    Page Should Not Contain    -20.00
+
+TC_ADMIN_14 - Product Price change updates the existing cart
+    [Documentation]    Verify an existing cart is changed when admin changes a product price.
+
+    Delete All Cookies
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text        id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button      Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/add/
+    Wait Until Page Contains Element    id=id_title    5s
+
+    Input Text        id=id_title          Robot Cart Price Test
+    Input Text        id=id_description    Product used to test cart price update
+    Input Text        id=id_price          25.00
+    Select Checkbox   id=id_active
+    Click Button      Save
+
+    Wait Until Page Contains    Robot Cart Price Test    5s
+
+    Delete All Cookies
+
+    Go To    ${BASE_URL}/search/
+    Input Text    name=q    Robot Cart Price Test
+    Click Button    Search
+
+    Wait Until Page Contains    Robot Cart Price Test    5s
+    Click Link    View
+
+    Wait Until Page Contains    Robot Cart Price Test    5s
+    Click Button    Add to Cart
+
+    Go To    ${BASE_URL}/cart/
+    Wait Until Page Contains    Robot Cart Price Test    5s
+    Page Should Contain    25.00
+    Page Should Contain    27.00
+
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text        id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button      Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/
+    Wait Until Page Contains    Robot Cart Price Test    5s
+    Click Link    Robot Cart Price Test
+
+    Wait Until Page Contains Element    id=id_price    5s
+    Clear Element Text    id=id_price
+    Input Text    id=id_price    40.00
+    Click Button    Save
+
+    Wait Until Page Contains Element    css:ul.messagelist li.success    5s
+
+    Go To    ${BASE_URL}/cart/
+    Wait Until Page Contains    Robot Cart Price Test    5s
+
+    Page Should Contain    40.00
+    Page Should Contain    43.20
+
+TC_ADMIN_15 - Updated Product Price Is Shown On Product Page
+    [Documentation]    Verify if an updated product price is displayed on the customer product page.
+
+    Delete All Cookies
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text        id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button      Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/add/
+    Wait Until Page Contains Element    id=id_title    5s
+
+    Input Text        id=id_title          Robot Detail Price Test
+    Input Text        id=id_description    Product used to test price display
+    Input Text        id=id_price          25.00
+    Select Checkbox   id=id_active
+    Click Button      Save
+
+    Wait Until Page Contains    Robot Detail Price Test    5s
+
+    Go To    ${BASE_URL}/admin/products/product/
+    Click Link    Robot Detail Price Test
+
+    Wait Until Page Contains Element    id=id_price    5s
+    Clear Element Text    id=id_price
+    Input Text    id=id_price    40.00
+    Click Button    Save
+
+    Wait Until Page Contains Element    css:ul.messagelist li.success    5s
+
+    Delete All Cookies
+
+    Go To    ${BASE_URL}/search/
+    Input Text    name=q    Robot Detail Price Test
+    Click Button    Search
+
+    Wait Until Page Contains    Robot Detail Price Test    5s
+    Click Link    View
+
+    Wait Until Page Contains    Robot Detail Price Test    5s
+
+    Page Should Contain    40.00
+
+TC_ADMIN_16 - Inactive Product Remains In Existing Cart
+    [Documentation]    Verify an inactive product is removed from an existing customer cart.
+
+    Delete All Cookies
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text        id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button      Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/add/
+    Wait Until Page Contains Element    id=id_title    5s
+
+    Input Text        id=id_title          Robot Inactive Cart Test
+    Input Text        id=id_description    Product used to test inactive cart behaviour
+    Input Text        id=id_price          30.00
+    Select Checkbox   id=id_active
+    Click Button      Save
+
+    Wait Until Page Contains    Robot Inactive Cart Test    5s
+
+    Delete All Cookies
+
+    Login Test Customer
+    Wait Until Page Contains    Logout    5s
+
+    Go To    ${BASE_URL}/search/
+    Input Text    name=q    Robot Inactive Cart Test
+    Click Button    Search
+
+    Wait Until Page Contains    Robot Inactive Cart Test    5s
+    Click Link    View
+
+    Wait Until Page Contains    Robot Inactive Cart Test    5s
+    Click Button    Add to Cart
+
+    Go To    ${BASE_URL}/cart/
+    Page Should Contain    Robot Inactive Cart Test
+
+    Go To    ${BASE_URL}/admin/
+
+    Wait Until Page Contains Element    id=id_username    5s
+    Wait Until Page Contains Element    id=id_password    5s
+
+    Input Text        id=id_username    ${ADMIN_EMAIL}
+    Input Password    id=id_password    ${ADMIN_PASSWORD}
+    Click Button      Log in
+
+    Wait Until Page Contains    Site administration    5s
+
+    Go To    ${BASE_URL}/admin/products/product/
+    Wait Until Page Contains    Robot Inactive Cart Test    5s
+    Click Link    Robot Inactive Cart Test
+
+    Wait Until Page Contains Element    id=id_active    5s
+    Click Element    id=id_active
+    Click Button    Save
+
+    Go To    ${BASE_URL}/cart/
+
+    Page Should Not Contain    Robot Inactive Cart Test
+    Page Should Contain    Cart is empty
