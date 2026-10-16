@@ -1,7 +1,10 @@
+
 # from django.http import HttpResponse
-from django.shortcuts import render  # , redirect
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .forms import ContactForm
+from .models import ContactMessage
 
 
 def home_page(request):
@@ -44,8 +47,22 @@ def contact_page(request):
         "form": contact_form,
     }
 
-    if contact_form.is_valid():
+    if request.method == "POST" and contact_form.is_valid():
         print(contact_form.cleaned_data)
+
+        ContactMessage.objects.create(
+            full_name=contact_form.cleaned_data["fullname"],
+            email=contact_form.cleaned_data["email"],
+            content=contact_form.cleaned_data["content"],
+        )
+
+        messages.success(
+            request,
+            "Message Sent Successfully! Thank you for contacting us. "
+            "Your message has been received successfully."
+        )
+
+        return redirect("contact")
 
     if request.method == "POST":
         print(request.POST)

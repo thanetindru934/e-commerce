@@ -7,15 +7,19 @@ Suite Teardown   Close All Browsers
 
 *** Test Cases ***
 
+
+# REGISTRATION TESTS
+
+
 TC_REG_01 - Register With Valid Details
-    [Documentation]    Verify registration using valid customer information.
+    [Documentation]    Verify registration succeeds using valid customer information.
     Register Test Customer
     Location Should Be    ${BASE_URL}/login/
     Page Should Contain    Login
 
 
 TC_REG_02 - Register With Existing Email
-    [Documentation]    Verify duplicate email registration is rejected.
+    [Documentation]    Verify registration is rejected when the email already exists.
     Go To Registration
     Input Text        id=id_full_name    Duplicate Customer
     Input Text        id=id_email        ${TEST_EMAIL}
@@ -26,16 +30,99 @@ TC_REG_02 - Register With Existing Email
     Page Should Contain    already exists
 
 
-TC_REG_03 - Register With Empty Required Fields
-    [Documentation]    Verify required registration fields are validated.
+TC_REG_03 - Register With All Fields Empty
+    [Documentation]    Verify registration is rejected when all required fields are empty.
     Go To Registration
     Click Button    Register
     Location Should Be    ${BASE_URL}/register/
     Page Should Contain    Register
 
 
-TC_LOGIN_01 - Login With Valid Credentials
-    [Documentation]    Verify registered customer can login.
+TC_REG_04 - Register With Empty Full Name
+    [Documentation]    Verify registration is rejected when full name is empty.
+    Go To Registration
+    Input Text        id=id_email        noname_robot@example.com
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Input Password    id=id_password2    ${TEST_PASSWORD}
+    Click Button      Register
+    Location Should Be    ${BASE_URL}/register/
+    Page Should Contain    Register
+
+
+TC_REG_05 - Register With Empty Email
+    [Documentation]    Verify registration is rejected when email is empty.
+    Go To Registration
+    Input Text        id=id_full_name    Empty Email Customer
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Input Password    id=id_password2    ${TEST_PASSWORD}
+    Click Button      Register
+    Location Should Be    ${BASE_URL}/register/
+    Page Should Contain    Register
+
+
+TC_REG_06 - Register With Empty Password
+    [Documentation]    Verify registration is rejected when the password is empty.
+    Go To Registration
+    Input Text        id=id_full_name    Empty Password Customer
+    Input Text        id=id_email        emptypassword_robot@example.com
+    Input Password    id=id_password2    ${TEST_PASSWORD}
+    Click Button      Register
+    Location Should Be    ${BASE_URL}/register/
+    Page Should Contain    Register
+
+
+TC_REG_07 - Register With Empty Confirm Password
+    [Documentation]    Verify registration is rejected when confirmation password is empty.
+    Go To Registration
+    Input Text        id=id_full_name    Empty Confirm Customer
+    Input Text        id=id_email        emptyconfirm_robot@example.com
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Click Button      Register
+    Location Should Be    ${BASE_URL}/register/
+    Page Should Contain    Register
+
+
+TC_REG_08 - Register With Mismatched Passwords
+    [Documentation]    Verify registration is rejected when passwords do not match.
+    Go To Registration
+    Input Text        id=id_full_name    Mismatch Customer
+    Input Text        id=id_email        mismatch_robot@example.com
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Input Password    id=id_password2    DifferentPassword@123
+    Click Button      Register
+    Location Should Be    ${BASE_URL}/register/
+    Page Should Contain    Register
+
+
+TC_REG_09 - Register With Invalid Email Format
+    [Documentation]    Verify registration is rejected when an invalid email format is entered.
+    Go To Registration
+    Input Text        id=id_full_name    Invalid Email Customer
+    Input Text        id=id_email        invalid-email-format
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Input Password    id=id_password2    ${TEST_PASSWORD}
+    Click Button      Register
+    Location Should Be    ${BASE_URL}/register/
+    Page Should Contain    Register
+
+
+TC_REG_10 - Register With Spaces Around Email
+    [Documentation]    Verify the registration system safely handles leading and trailing spaces in an email.
+    Go To Registration
+    Input Text        id=id_full_name    Space Email Customer
+    Input Text        id=id_email        ${SPACE}spaceemail_robot@example.com${SPACE}
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Input Password    id=id_password2    ${TEST_PASSWORD}
+    Click Button      Register
+    Page Should Not Contain    Server Error
+
+
+# LOGIN TESTS
+# All 7 required login combinations
+
+
+TC_LOGIN_01 - Valid Username And Valid Password
+    [Documentation]    Verify login succeeds with valid username and valid password.
     Go To Login
     Input Text        id=id_email       ${TEST_EMAIL}
     Input Password    id=id_password    ${TEST_PASSWORD}
@@ -44,9 +131,19 @@ TC_LOGIN_01 - Login With Valid Credentials
     Page Should Contain    Logout
 
 
-TC_LOGIN_02 - Login With Incorrect Password
-    [Documentation]    Verify login is rejected for an incorrect password.
+TC_LOGIN_02 - Invalid Username And Valid Password
+    [Documentation]    Verify login fails with invalid username and valid password.
     Go To    ${BASE_URL}/logout/
+    Go To Login
+    Input Text        id=id_email       invalid_robot@example.com
+    Input Password    id=id_password    ${TEST_PASSWORD}
+    Click Button      Login
+    Location Should Be    ${BASE_URL}/login/
+    Page Should Contain    Login
+
+
+TC_LOGIN_03 - Valid Username And Invalid Password
+    [Documentation]    Verify login fails with valid username and invalid password.
     Go To Login
     Input Text        id=id_email       ${TEST_EMAIL}
     Input Password    id=id_password    WrongPassword123
@@ -55,22 +152,63 @@ TC_LOGIN_02 - Login With Incorrect Password
     Page Should Contain    Login
 
 
-TC_LOGIN_03 - Login With Unregistered Email
-    [Documentation]    Verify an unregistered customer cannot login.
+TC_LOGIN_04 - Invalid Username And Invalid Password
+    [Documentation]    Verify login fails with invalid username and invalid password.
     Go To Login
-    Input Text        id=id_email       nobody_robot@example.com
+    Input Text        id=id_email       invalid_robot@example.com
+    Input Password    id=id_password    WrongPassword123
+    Click Button      Login
+    Location Should Be    ${BASE_URL}/login/
+    Page Should Contain    Login
+
+
+TC_LOGIN_05 - Empty Username And Valid Password
+    [Documentation]    Verify login fails with empty username and valid password.
+    Go To Login
     Input Password    id=id_password    ${TEST_PASSWORD}
     Click Button      Login
     Location Should Be    ${BASE_URL}/login/
     Page Should Contain    Login
 
 
-TC_LOGIN_04 - Login With Empty Fields
-    [Documentation]    Verify required login fields are validated.
+TC_LOGIN_06 - Valid Username And Empty Password
+    [Documentation]    Verify login fails with valid username and empty password.
     Go To Login
-    Click Button    Login
+    Input Text        id=id_email       ${TEST_EMAIL}
+    Click Button      Login
     Location Should Be    ${BASE_URL}/login/
     Page Should Contain    Login
+
+
+TC_LOGIN_07 - Empty Username And Empty Password
+    [Documentation]    Verify login fails when both username and password are empty.
+    Go To Login
+    Click Button      Login
+    Location Should Be    ${BASE_URL}/login/
+    Page Should Contain    Login
+
+
+
+# LOGOUT TEST
+
+
+# LOGOUT TEST
+
+TC_LOGOUT_01 - Logout Logged In Customer
+    [Documentation]    Verify a logged-in customer can successfully logout.
+    Go To Login
+    Input Text        id=id_email       ${TEST_EMAIL}
+    Input Password    id=id_password    ${TEST_PASSWORD}
+    Click Button      Login
+
+    Wait Until Page Contains    Logout    10 seconds
+    Page Should Contain    Logout
+
+    Click Link    Logout
+
+    Location Should Contain    /login/
+    Page Should Contain    Login
+    Page Should Not Contain    Logout
 
 
 TC_PROD_01 - Display Product List
