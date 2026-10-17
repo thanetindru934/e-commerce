@@ -106,20 +106,10 @@ Search And Open Product
 # ============================================================
 
 TC_REG_01 - Register With Valid Details
-    [Documentation]    Verify registration succeeds with a new valid account.
-    ${unique}=    Evaluate    __import__('uuid').uuid4().hex[:12]
-    ${email}=    Set Variable    robot_${unique}@example.com
-
-    Go To Registration
-    Input Text    id=id_full_name    Robot Test Customer
-    Input Text    id=id_email    ${email}
-    Input Password    id=id_password1    ${TEST_PASSWORD}
-    Input Password    id=id_password2    ${TEST_PASSWORD}
-    Click Button    Register
-
-    Wait Until Location Is    ${BASE_URL}/login/    10s
+    [Documentation]    Verify registration succeeds using valid customer information.
+    Register Test Customer
+    Location Should Be    ${BASE_URL}/login/
     Page Should Contain    Login
-
 
 TC_REG_02 - Register With Existing Email
     [Documentation]    Verify registration is rejected when the email already exists.
