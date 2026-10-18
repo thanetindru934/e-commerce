@@ -76,10 +76,7 @@ The final functional test run identified five failing scenarios:
 Recommended improvements include server-side price validation, consistent price updates across carts and product pages, stronger checkout validation, and accurate search filtering. Performance testing also identified potential concurrency limitations associated with SQLite under load.
 Project Structure
 The original repository includes an outer project directory and an inner ecommerce directory containing the Django application and manage.py.
-repository-root/
-├── ecommerce/        # Django project directory (manage.py inside)
-├── static_cdn/       # Static/media assets in the original layout
-└── README.md
+
 Other files and folders depend on the version of the project checked out.
 Academic Context
 Developed and tested for PRT582 – Software Engineering: Process and Tools, Charles Darwin University, 2026.
