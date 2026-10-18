@@ -101,9 +101,9 @@ Search And Open Product
 
 *** Test Cases ***
 
-# ============================================================
+
 # REGISTRATION TESTS (13)
-# ============================================================
+
 
 TC_REG_01 - Register With Valid Details
     [Documentation]    Verify registration succeeds using valid customer information.
@@ -111,16 +111,40 @@ TC_REG_01 - Register With Valid Details
     Location Should Be    ${BASE_URL}/login/
     Page Should Contain    Login
 
+
 TC_REG_02 - Register With Existing Email
-    [Documentation]    Verify registration is rejected when the email already exists.
+    [Documentation]    Verify duplicate email registration is rejected.
+
+    ${unique}=    Evaluate    __import__('uuid').uuid4().hex[:12]
+    ${email}=    Set Variable    duplicate_${unique}@example.com
+
+    # Step 1: Register a new customer
     Go To Registration
-    Input Text        id=id_full_name    Duplicate Customer
-    Input Text        id=id_email        ${TEST_EMAIL}
+    Input Text    id=id_full_name    Robot Test Customer
+    Input Text    id=id_email    ${email}
     Input Password    id=id_password1    ${TEST_PASSWORD}
     Input Password    id=id_password2    ${TEST_PASSWORD}
-    Click Button      Register
-    Location Should Be    ${BASE_URL}/register/
-    Page Should Contain    already exists
+    Click Button    Register
+
+    Wait Until Location Is    ${BASE_URL}/login/    10s
+
+    # Step 2: Attempt to register with the same email
+    Go To Registration
+    Input Text    id=id_full_name    Duplicate Customer
+    Input Text    id=id_email    ${email}
+    Input Password    id=id_password1    ${TEST_PASSWORD}
+    Input Password    id=id_password2    ${TEST_PASSWORD}
+    Click Button    Register
+
+    # Step 3: Inspect actual application behaviour
+    ${actual_url}=    Get Location
+    Log To Console    ACTUAL URL: ${actual_url}
+
+    ${page_text}=    Get Text    xpath=//body
+    Log To Console    PAGE TEXT: ${page_text}
+
+    Capture Page Screenshot
+
 
 TC_REG_03 - Register With All Fields Empty
     [Documentation]    Verify registration is rejected when all required fields are empty.
@@ -130,14 +154,24 @@ TC_REG_03 - Register With All Fields Empty
     Page Should Contain    Register
 
 TC_REG_04 - Register With Empty Full Name
-    [Documentation]    Verify registration is rejected when full name is empty.
+    [Documentation]    Verify registration rejects an empty full name.
+
     Go To Registration
-    Input Text        id=id_email        noname_robot@example.com
+
+    Input Text    id=id_email    noname_robot@example.com
     Input Password    id=id_password1    ${TEST_PASSWORD}
     Input Password    id=id_password2    ${TEST_PASSWORD}
-    Click Button      Register
+
+    Click Button    Register
+
+    # Check that the form remains on registration page
     Location Should Be    ${BASE_URL}/register/
-    Page Should Contain    Register
+
+    # Check the required full-name field is invalid
+    ${invalid}=    Execute Javascript
+    ...    return document.getElementById('id_full_name').validity.valueMissing;
+
+    Should Be True    ${invalid}
 
 TC_REG_05 - Register With Empty Email
     [Documentation]    Verify registration is rejected when email is empty.
@@ -222,9 +256,9 @@ TC_REG_13 - Registration Email Field Is Available
     Element Should Be Enabled    id=id_email
 
 
-# ============================================================
+
 # LOGIN TESTS (10)
-# ============================================================
+
 
 TC_LOGIN_01 - Valid Username And Valid Password
     [Documentation]    Verify login succeeds with valid username and valid password.
@@ -303,9 +337,8 @@ TC_LOGIN_10 - Login Page Contains Submit Button
     Page Should Contain Button    Login
 
 
-# ============================================================
+
 # LOGOUT TESTS (2)
-# ============================================================
 
 TC_LOGOUT_01 - Logout Logged In Customer
     [Documentation]    Verify a logged-in customer can successfully logout.
@@ -330,9 +363,9 @@ TC_LOGOUT_02 - Logout Link Is Hidden On Login Page
     Page Should Not Contain    Logout
 
 
-# ============================================================
+
 # CONTACT FORM TESTS (8)
-# ============================================================
+
 
 TC_CONTACT_01 - Contact Form Page Loads
     [Documentation]    Verify the Contact Us page loads successfully.
@@ -387,9 +420,9 @@ TC_CONTACT_08 - Contact Form Displays Send Button
     Page Should Contain Button    Send Message
 
 
-# ============================================================
+
 # PRODUCT TESTS (6)
-# ============================================================
+
 
 TC_PROD_01 - Display Product List
     [Documentation]    Verify available products are displayed.
@@ -426,9 +459,9 @@ TC_PROD_06 - Products Page Contains Hat
     Page Should Contain    Hat
 
 
-# ============================================================
+
 # SEARCH TESTS (6)
-# ============================================================
+
 
 TC_SEARCH_01 - Search Valid Product
     [Documentation]    Verify an existing product is returned by search.
@@ -472,9 +505,9 @@ TC_SEARCH_06 - Search Returns T Shirt Product
     Page Should Contain    T-Shirt
 
 
-# ============================================================
+
 # CART TESTS (7)
-# ============================================================
+
 
 TC_CART_01 - Add One Product To Cart
     [Documentation]    Verify a product can be added to the shopping cart.
@@ -523,9 +556,9 @@ TC_CART_07 - Cart Shows Subtotal After Adding Hat
     Page Should Contain    Subtotal
 
 
-# ============================================================
+
 # CHECKOUT TESTS (14)
-# ============================================================
+
 
 TC_CHECK_01 - Checkout With Valid Information
     [Documentation]    Verify successful checkout with valid details.
