@@ -80,5 +80,5 @@ The original repository includes an outer project directory and an inner ecommer
 Other files and folders depend on the version of the project checked out.
 Academic Context
 Developed and tested for PRT582 – Software Engineering: Process and Tools, Charles Darwin University, 2026.
-Notes
+Notes:
 This repository is an academic project and may contain unresolved issues. Before any public deployment, review application security, environment configuration, secret management, database choice, and production hosting.
